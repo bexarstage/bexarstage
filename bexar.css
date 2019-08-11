@@ -1,0 +1,21 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'PT Sans Narrow', sans-serif;
+	color: #231f20;
+}
+
+a {
+	text-transform: uppercase;
+}
+
+p > a {
+	text-transform: none;
+}
+
+.bexar-red {
+	background-color: #cf222b;
+}
+
+.bexar-blue {
+	background-color: #0075b2;
+}
