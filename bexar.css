@@ -19,3 +19,28 @@ p > a {
 .bexar-blue {
 	background-color: #0075b2;
 }
+.headline-container {
+	display: inline-block;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	background-color: rgba(0,0,0,.75)
+}
+
+.gradient-blue-lagoon {
+    background: #43C6AC; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #191654, #43C6AC); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #191654, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.card {
+    background-color: rgba(255,255,255,.3);
+}
+/*
+
+     transform: skewY(-5deg);
+.gradient-blue-lagoon > * {
+    transform: skewY(5deg);
+}
+
+
+*/
