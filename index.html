@@ -130,7 +130,10 @@
 			<section class="row gradient-blue-lagoon pb-5">
 				<div class="container">
 						<h2 class="display-4 mt-5 text-white">Shows</h2>
+					<div class="card-columns" id="eventsContainer">
 
+</div>
+<!--
 						<div class="row">
 							<div class="card mt-4">
 								<div class="card-header">
@@ -216,7 +219,7 @@
 								</div>
 							</div>
 						</div>
-					
+-->					
 				</div>
 			</section>
 		</main>
@@ -259,6 +262,7 @@ var eventsjson = [{"ticket_uri": "https://www.eventbrite.com/e/nightcap-near-the
 				});
 				*/
 				var alldates = [];
+				var thisDate = 0;
 				$.each(eventsjson, function(i, item) {
 					var location = item.place;
 					var ticketLink = item.ticket_uri;
@@ -271,7 +275,14 @@ var eventsjson = [{"ticket_uri": "https://www.eventbrite.com/e/nightcap-near-the
 					var isShow = ((new Date(item.start_time).getHours() < 20) ? false : true);
 					//startDate+' - '+endDate
 					//new Date(item.end_time).getDate() == new Date(item.start_time).getDate()
-					console.log(eventName)
+					if (alldates.indexOf(startDate) == -1) {
+						alldates.push(startDate)
+					}
+					
+					if (startDate == thisDate) {
+						alldates.push(startDate)
+					}
+					$('#eventsContainer').append('<div class="card"><img class="card-img-top" src="https://imgur.com/zRgiKAy.jpg" alt="Card image cap"><div class="card-body"><h3 class="card-title">'+eventName+'</h3><p class="card-text">'+description+'</p></div><div class="card-footer"><a href="'+ticketLink+' target="_blank">Get tickets</a></div></div>')
 				});
 				
 				function timeFormat(d) {
@@ -313,6 +324,7 @@ var eventsjson = [{"ticket_uri": "https://www.eventbrite.com/e/nightcap-near-the
 		</script>
 	</body>
 </html>
+
 
 
 
