@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Bexar Stage  |  Contact</title>
+		<script type="application/ld+json"> 
+			{
+			  "@context": "http://www.schema.org",
+			  "@type": "ComedyClub",
+			  "name": "Bexar Stage",
+			  "url": "https://www.bexarstage.com/",
+			  "logo": "https://imgur.com/xjzdqq0",
+			  "image": "https://imgur.com/xjzdqq0",
+			  "description": "Bexar Stage is San Antonio's premier venue for comedy entertainment and training, offering shows Thursday, Friday, and Saturday nights. The free weekly show, Key Party, is now one of San Antonio's most attended events.",
+			  "address": {
+			    "@type": "PostalAddress",
+			    "streetAddress": "1203 Camden Ave",
+			    "addressLocality": "San Antonio",
+			    "addressRegion": "United States (US) — Texas",
+			    "postalCode": "78215",
+			    "addressCountry": "United States"
+			  },
+			  "geo": {
+			    "@type": "GeoCoordinates",
+			    "latitude": "29.439960",
+			    "longitude": "-98.483380"
+			  },
+			  "hasMap": "https://goo.gl/maps/xjp8MLNMMBmmAP3TA",
+			  "openingHours": "Th, Fr, Sa 19:00-23:30",
+			  "contactPoint": {
+			    "@type": "ContactPoint",
+			    "telephone": "(210) 281-4259",
+			    "contactType": "Box Office"
+			  }
+			}
+			 
+		</script>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<!-- Favicons -->
+		{% load static %}
+		<link href="https://imgur.com/RO27nsS.png" rel="icon">
+		<link href="https://imgur.com/nnUBh6U.png" rel="apple-touch-icon">
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+		<!-- Bootstrap CSS File
+			<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+		<link href="{% static "lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+		<link href="{% static "lib/animate/animate.min.css" %}" rel="stylesheet">
+		<!-- Libraries CSS Files -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet">
+		<link href="{% static "css/style.css" %}" rel="stylesheet">
+		<!-- Main Stylesheet File
+			<link href="css/style.css" rel="stylesheet"> -->
+		<style>
+            html, body {
+                min-height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+            }
+			.more-btn:hover {
+                background: #761318;
+                color: #FFFFFF;
+			}
+            
+            .contactSection {
+                margin-top: 4rem; 
+            }
+            #contactParent {
+                width: auto;
+                height: 100vh;
+                background: url(https://i.imgur.com/8HerCwS.jpg) top center;
+                background-size:cover;
+                position: relative;
+                display: flex;
+            }
+            
+            #contactParent:before {
+                content: "";
+                background: rgba(0, 0, 0, 0.6);
+                position: absolute;
+                bottom: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+            }
+		</style>
+	</head>
+	<body>
+        <header id="header">
+            <div class="container">
+                <div id="logo" class="pull-left">
+                    <a href="{% url 'home' %}"><img src="https://imgur.com/V1hSxVk.png" alt="Bexar Stage logo and text" title="" height="32" width="auto"/></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li class="menu-active"><a href="{% url 'contact' %}">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <!-- #nav-menu-container -->
+            </div>
+        </header>
+            <main id="main">
+                <section id="contactParent">
+                    <div class="container">
+                        <div class="contactSection pt-5">
+                                <div class="card mt-5">
+                                        <div class="card-header">
+                                            <h1 class="card-title">CONTACT US</h1>
+                                        </div>
+                                        <div class="card-body">
+                                        <!--
+                                            first_name
+                                            last_name
+                                            from_email
+                                            phone
+                                            interested_in
+                                            subject
+                                            message
+                                        -->
+                                        {% load crispy_forms_tags %}
+                            
+                                        {% block content %}
+                                            <form method="post" novalidate>
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        {{ form.first_name|as_crispy_field }}
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ form.last_name|as_crispy_field }}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        {{ form.from_email|as_crispy_field }}
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ form.phone|as_crispy_field }}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        {{ form.interested_in|as_crispy_field }}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        {{ form.message|as_crispy_field }}
+                                                    </div>
+                                                </div>
+                                                <button type="submit"  class="btn more-btn float-right my-3"><i class="fa fa-send"></i>SEND</button>
+                                            </form>
+                                        {% endblock %}
+                                        </div>
+                                </div>
+                        </div>
+                        
+                            
+                            
+                    </div>
+                </section>
+            </main>
+            <footer id="footer">
+                    <div class="footer-top">
+                        <div class="container">
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="copyright" style="color: rgba(255,255,255,.1)">
+                            &copy; Copyright <strong>Regna</strong>. All Rights Reserved
+                        </div>
+                        <div class="credits">
+                            <p style="color: rgba(255,255,255,.1)">Designed by <a style="color: rgba(255,255,255,.1)" href="https://bootstrapmade.com/">BootstrapMade</a></p>
+                        </div>
+                    </div>
+                </footer>
+                <!-- #footer -->
+                <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- JavaScript Libraries -->
+        <script src="{% static "lib/jquery/jquery.min.js" %}" ></script>
+        <script src="{% static "lib/jquery/jquery-migrate.min.js" %}" ></script>
+        <script src="{% static "lib/bootstrap/js/bootstrap.bundle.min.js" %}" ></script>
+        <script src="{% static "lib/easing/easing.min.js" %}" ></script>
+        <script src="{% static "lib/wow/wow.min.js" %}" ></script>
+        <script src="{% static "lib/waypoints/waypoints.min.js" %}" ></script>
+        <script src="{% static "lib/counterup/counterup.min.js" %}" ></script>
+        <script src="{% static "lib/superfish/hoverIntent.js" %}" ></script>
+        <script src="{% static "lib/superfish/superfish.min.js" %}" ></script>
+        <script src="{% static "contactform/contactform.js" %}" ></script>
+        <!-- Template Main Javascript File -->
+        <script src="{% static "js/main.js" %}" ></script>
+    </body>
+</html>
