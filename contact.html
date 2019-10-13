@@ -37,20 +37,13 @@
 		</script>
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<!-- Favicons -->
-		{% load static %}
 		<link href="https://imgur.com/RO27nsS.png" rel="icon">
 		<link href="https://imgur.com/nnUBh6U.png" rel="apple-touch-icon">
 		<!-- Google Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
-		<!-- Bootstrap CSS File
-			<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-		<link href="{% static "lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-		<link href="{% static "lib/animate/animate.min.css" %}" rel="stylesheet">
-		<!-- Libraries CSS Files -->
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet">
-		<link href="{% static "css/style.css" %}" rel="stylesheet">
-		<!-- Main Stylesheet File
-			<link href="css/style.css" rel="stylesheet"> -->
+		
+    <link href="bexarbundle.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 		<style>
             html, body {
                 min-height: 100%;
@@ -91,15 +84,13 @@
                     <a href="{% url 'home' %}"><img src="https://imgur.com/V1hSxVk.png" alt="Bexar Stage logo and text" title="" height="32" width="auto"/></a>
                 </div>
                 <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="{% url 'blog' %}">Blog</a></li>
-                        <li class="menu-active"><a href="{% url 'contact' %}">Contact Us</a></li>
-                    </ul>
-                </nav>
+					<ul class="nav-menu">
+						<li href="index.html"><a href="#hero">Home</a></li>
+						<li><a href="shows.html">Shows</a></li>
+						<li><a href="classes.html">Classes</a></li>
+						<li class="menu-active"><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
                 <!-- #nav-menu-container -->
             </div>
         </header>
@@ -112,49 +103,35 @@
                                             <h1 class="card-title">CONTACT US</h1>
                                         </div>
                                         <div class="card-body">
-                                        <!--
-                                            first_name
-                                            last_name
-                                            from_email
-                                            phone
-                                            interested_in
-                                            subject
-                                            message
-                                        -->
-                                        {% load crispy_forms_tags %}
-                            
-                                        {% block content %}
-                                            <form method="post" novalidate>
-                                                {% csrf_token %}
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {{ form.first_name|as_crispy_field }}
-                                                    </div>
-                                                    <div class="col-6">
-                                                        {{ form.last_name|as_crispy_field }}
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {{ form.from_email|as_crispy_field }}
-                                                    </div>
-                                                    <div class="col-6">
-                                                        {{ form.phone|as_crispy_field }}
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        {{ form.interested_in|as_crispy_field }}
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        {{ form.message|as_crispy_field }}
-                                                    </div>
-                                                </div>
-                                                <button type="submit"  class="btn more-btn float-right my-3"><i class="fa fa-send"></i>SEND</button>
-                                            </form>
-                                        {% endblock %}
+											<form name="contact" method="POST" data-netlify="true">
+												<div class="form-group">
+													<label>Your Name</label>
+													<input class="form-control" type="text" name="name" required/>  
+												</div>
+												<div class="form-group">
+													<label>Your Email</label>
+													<input class="form-control" type="email" name="email" required/>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker">
+														<option> – I'm interested in –</option>
+														<option>Classes</option>
+														<option>Shows</option>
+														<option>Corporate Training</option>
+														<option>Cat Facts</option>
+														<option>Other</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<label>Phone Number <em class="text-light"> – Optional</em></label>
+													<input class="form-control" type="tel" name="phone" />
+												</div>
+												<div class="form-group">
+													<label>Message <em class="text-light"> – Optional</em></label>
+													<textarea class="form-control" name="message"></textarea>
+												</div>
+												<button type="submit"  class="btn more-btn float-right my-3"><i class="fa fa-send"></i>SEND</button>
+											</form>
                                         </div>
                                 </div>
                         </div>
@@ -181,17 +158,8 @@
                 <!-- #footer -->
                 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         <!-- JavaScript Libraries -->
-        <script src="{% static "lib/jquery/jquery.min.js" %}" ></script>
-        <script src="{% static "lib/jquery/jquery-migrate.min.js" %}" ></script>
-        <script src="{% static "lib/bootstrap/js/bootstrap.bundle.min.js" %}" ></script>
-        <script src="{% static "lib/easing/easing.min.js" %}" ></script>
-        <script src="{% static "lib/wow/wow.min.js" %}" ></script>
-        <script src="{% static "lib/waypoints/waypoints.min.js" %}" ></script>
-        <script src="{% static "lib/counterup/counterup.min.js" %}" ></script>
-        <script src="{% static "lib/superfish/hoverIntent.js" %}" ></script>
-        <script src="{% static "lib/superfish/superfish.min.js" %}" ></script>
-        <script src="{% static "contactform/contactform.js" %}" ></script>
-        <!-- Template Main Javascript File -->
-        <script src="{% static "js/main.js" %}" ></script>
+    <script src="bexarbundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
     </body>
 </html>
