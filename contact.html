@@ -103,7 +103,10 @@
                                             <h1 class="card-title">CONTACT US</h1>
                                         </div>
                                         <div class="card-body">
-											<form name="contact" method="POST" data-netlify="true">
+											<form name="contact" method="POST" data-netlify="true"  data-netlify-recaptcha="true">
+													<p class="hidden">
+														<label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+													</p>
 												<div class="form-group">
 													<label>Your Name</label>
 													<input class="form-control" type="text" name="name" required/>  
@@ -130,6 +133,7 @@
 													<label>Message <em class="text-light"> – Optional</em></label>
 													<textarea class="form-control" name="message"></textarea>
 												</div>
+												<div data-netlify-recaptcha="true"></div>
 												<button type="submit"  class="btn more-btn float-right my-3"><i class="fa fa-send"></i>SEND</button>
 											</form>
                                         </div>
